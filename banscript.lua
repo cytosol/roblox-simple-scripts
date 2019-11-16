@@ -1,11 +1,9 @@
--- Horsie!
-local banned = {["Banned"] = true} -- Banned peeps
-local message = "" -- Add a ban message here!
-function CheckBan(plr)
-    if banned[plr.Name] then
-       plr:Kick(message)
-    end
-end
-game.Players.ChildAdded:connect(function(new)
-   CheckBan(new)
-end
+-- banscript.lua
+local bannedPlayers = {["username"] = true} -- {["username"] = true, ["username2"] = true}
+local banMessage = "You're banned from this game." -- The message displayed to banned players when trying to join.
+
+game.Players.PlayerAdded:Connect(function(plr)
+   if bannedPlayers[plr.Name] then
+      plr:Kick(banMessage)
+   end
+end)
